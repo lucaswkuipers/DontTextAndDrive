@@ -3,7 +3,7 @@ import SpriteKit
 enum GameComposer {
     static func makeScene() -> UIViewController {
         let viewController = GenericViewController()
-        let scene = GameScene(size: Device.size)
+        let scene = GameScene()
         let view = GameView()
         let controllerManager = ControllerManager()
         let brain = GameBrain()
