@@ -10,6 +10,7 @@
 		ECBB211A27C5DF9300E171C0 /* Int+isBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB211927C5DF9300E171C0 /* Int+isBetween.swift */; };
 		ECBB211D27C5E16500E171C0 /* Double+isBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB211C27C5E16500E171C0 /* Double+isBetween.swift */; };
 		ECBB211F27C5E1DF00E171C0 /* CGFloat+isBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB211E27C5E1DF00E171C0 /* CGFloat+isBetween.swift */; };
+		ECBB212227C5EBA900E171C0 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB212127C5EBA900E171C0 /* MotionManager.swift */; };
 		ECDF982527C4B001000281F1 /* GameBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981727C4B001000281F1 /* GameBrain.swift */; };
 		ECDF982627C4B001000281F1 /* GameAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981827C4B001000281F1 /* GameAdapter.swift */; };
 		ECDF982727C4B001000281F1 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981927C4B001000281F1 /* GameView.swift */; };
@@ -28,6 +29,7 @@
 		ECBB211927C5DF9300E171C0 /* Int+isBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+isBetween.swift"; sourceTree = "<group>"; };
 		ECBB211C27C5E16500E171C0 /* Double+isBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+isBetween.swift"; sourceTree = "<group>"; };
 		ECBB211E27C5E1DF00E171C0 /* CGFloat+isBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+isBetween.swift"; sourceTree = "<group>"; };
+		ECBB212127C5EBA900E171C0 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		ECDF97FC27C4AFDF000281F1 /* DontTextAndDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontTextAndDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDF981727C4B001000281F1 /* GameBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBrain.swift; sourceTree = "<group>"; };
 		ECDF981827C4B001000281F1 /* GameAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAdapter.swift; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 				ECBB211E27C5E1DF00E171C0 /* CGFloat+isBetween.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ECBB212027C5EB9800E171C0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				ECBB212127C5EBA900E171C0 /* MotionManager.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		ECDF97F327C4AFDE000281F1 = {
@@ -105,6 +115,7 @@
 		ECDF981D27C4B001000281F1 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				ECBB212027C5EB9800E171C0 /* Service */,
 				ECBB211B27C5E14C00E171C0 /* Extensions */,
 				ECDF982027C4B001000281F1 /* Assets.xcassets */,
 				ECDF982127C4B001000281F1 /* LaunchScreen.storyboard */,
@@ -187,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECDF982527C4B001000281F1 /* GameBrain.swift in Sources */,
+				ECBB212227C5EBA900E171C0 /* MotionManager.swift in Sources */,
 				ECDF982A27C4B001000281F1 /* GameControllerManager.swift in Sources */,
 				ECBB211D27C5E16500E171C0 /* Double+isBetween.swift in Sources */,
 				ECDF982927C4B001000281F1 /* GameComposer.swift in Sources */,
@@ -345,6 +357,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -371,6 +384,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
