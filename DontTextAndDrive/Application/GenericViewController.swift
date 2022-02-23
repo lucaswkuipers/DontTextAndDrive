@@ -1,6 +1,6 @@
 import UIKit
 
-protocol GenericViewControllerDelegate {
+protocol GenericViewControllerDelegate: AnyObject {
     func viewDidLoad()
     func viewWillAppear()
     func viewWillLayoutSubviews()
@@ -21,7 +21,7 @@ extension GenericViewControllerDelegate {
 }
 
 final class GenericViewController: UIViewController {
-    var delegate: GenericViewControllerDelegate?
+    weak var delegate: GenericViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,6 @@ final class GenericViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         delegate?.viewWillAppear()
-        navigationController?.isNavigationBarHidden = true
     }
 
     override func viewWillLayoutSubviews() {
@@ -52,7 +51,6 @@ final class GenericViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         delegate?.viewWillDisappear()
-        navigationController?.isNavigationBarHidden = false
     }
 
     override func viewDidDisappear(_ animated: Bool) {

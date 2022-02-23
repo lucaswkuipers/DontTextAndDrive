@@ -3,8 +3,8 @@ import SpriteKit
 
 // MARK: - Protocols
 
-protocol GameViewControllerProtocol: UIViewController {}
-protocol GameViewProtocol: UIView {}
+protocol GameViewControllerProtocol {}
+protocol GameViewProtocol {}
 protocol GameSceneProtocol: SKScene {}
 protocol GameControllerManagerProtocol {}
 protocol GameBrainProtocol {}

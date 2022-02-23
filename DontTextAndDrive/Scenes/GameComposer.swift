@@ -19,6 +19,7 @@ enum GameComposer {
         controllerManager.delegate = adapter
         scene.gameDelegate = adapter
         brain.delegate = adapter
+
         view.gameScene = scene
         viewController.view = view
 
