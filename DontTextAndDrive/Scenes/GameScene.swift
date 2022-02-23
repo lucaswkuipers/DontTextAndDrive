@@ -5,7 +5,7 @@ protocol GameSceneDelegate: AnyObject {}
 
 final class GameScene: SKScene {
     weak var gameDelegate: GameSceneDelegate?
-    var direction = 1.0
+    private var horizontalVelocity: CGFloat = 1
 
     private let backgroundNode: SKSpriteNode = {
         let node = SKSpriteNode()
@@ -33,11 +33,11 @@ final class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
 
-        backgroundNode.position.x += direction
+        backgroundNode.position.x += horizontalVelocity
 
-        if backgroundNode.position.x >= frame.width * (3/4) || backgroundNode.position.x <= frame.width * (1/4) {
-            direction *= -1
-        }
+        if backgroundNode.position.x.isBetween(frame.width * (1/4), and: frame.width * (3/4)) { return }
+
+        horizontalVelocity *= -1
     }
 }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ECBB211A27C5DF9300E171C0 /* Int+isBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB211927C5DF9300E171C0 /* Int+isBetween.swift */; };
+		ECBB211D27C5E16500E171C0 /* Double+isBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB211C27C5E16500E171C0 /* Double+isBetween.swift */; };
+		ECBB211F27C5E1DF00E171C0 /* CGFloat+isBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB211E27C5E1DF00E171C0 /* CGFloat+isBetween.swift */; };
 		ECDF982527C4B001000281F1 /* GameBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981727C4B001000281F1 /* GameBrain.swift */; };
 		ECDF982627C4B001000281F1 /* GameAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981827C4B001000281F1 /* GameAdapter.swift */; };
 		ECDF982727C4B001000281F1 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981927C4B001000281F1 /* GameView.swift */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ECBB211927C5DF9300E171C0 /* Int+isBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+isBetween.swift"; sourceTree = "<group>"; };
+		ECBB211C27C5E16500E171C0 /* Double+isBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+isBetween.swift"; sourceTree = "<group>"; };
+		ECBB211E27C5E1DF00E171C0 /* CGFloat+isBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+isBetween.swift"; sourceTree = "<group>"; };
 		ECDF97FC27C4AFDF000281F1 /* DontTextAndDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontTextAndDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDF981727C4B001000281F1 /* GameBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBrain.swift; sourceTree = "<group>"; };
 		ECDF981827C4B001000281F1 /* GameAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAdapter.swift; sourceTree = "<group>"; };
@@ -48,6 +54,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ECBB211B27C5E14C00E171C0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ECBB211927C5DF9300E171C0 /* Int+isBetween.swift */,
+				ECBB211C27C5E16500E171C0 /* Double+isBetween.swift */,
+				ECBB211E27C5E1DF00E171C0 /* CGFloat+isBetween.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		ECDF97F327C4AFDE000281F1 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +105,7 @@
 		ECDF981D27C4B001000281F1 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				ECBB211B27C5E14C00E171C0 /* Extensions */,
 				ECDF982027C4B001000281F1 /* Assets.xcassets */,
 				ECDF982127C4B001000281F1 /* LaunchScreen.storyboard */,
 				ECDF982427C4B001000281F1 /* AppDelegate.swift */,
@@ -171,11 +188,14 @@
 			files = (
 				ECDF982527C4B001000281F1 /* GameBrain.swift in Sources */,
 				ECDF982A27C4B001000281F1 /* GameControllerManager.swift in Sources */,
+				ECBB211D27C5E16500E171C0 /* Double+isBetween.swift in Sources */,
 				ECDF982927C4B001000281F1 /* GameComposer.swift in Sources */,
 				ECDF982F27C4B001000281F1 /* Device.swift in Sources */,
 				ECDF982C27C4B001000281F1 /* AppWindowComposer.swift in Sources */,
 				ECDF982727C4B001000281F1 /* GameView.swift in Sources */,
+				ECBB211A27C5DF9300E171C0 /* Int+isBetween.swift in Sources */,
 				ECDF982B27C4B001000281F1 /* GenericViewController.swift in Sources */,
+				ECBB211F27C5E1DF00E171C0 /* CGFloat+isBetween.swift in Sources */,
 				ECDF982827C4B001000281F1 /* GameScene.swift in Sources */,
 				ECDF983027C4B001000281F1 /* AppDelegate.swift in Sources */,
 				ECDF982627C4B001000281F1 /* GameAdapter.swift in Sources */,
