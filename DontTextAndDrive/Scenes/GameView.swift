@@ -20,7 +20,7 @@ final class GameView: SCNView {
         preferredFramesPerSecond = 120
 
         #if DEBUG
-        allowsCameraControl = true
+//        allowsCameraControl = true
         showsStatistics = true
         #endif
     }
