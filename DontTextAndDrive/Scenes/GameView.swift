@@ -1,18 +1,14 @@
-import SpriteKit
+import SceneKit
 
-protocol GameViewDelegate: AnyObject {}
-
-final class GameView: SKView {
-    weak var gameDelegate: GameViewDelegate?
-
-    var gameScene: GameSceneProtocol? {
+final class GameView: SCNView {
+    var gameDelegate: SCNSceneRendererDelegate? {
         didSet {
-            presentScene()
+            delegate = gameDelegate
         }
     }
 
     init() {
-        super.init(frame: Device.bounds)
+        super.init(frame: Device.bounds, options: nil)
         setupPreferences()
     }
 
@@ -20,23 +16,12 @@ final class GameView: SKView {
         super.init(coder: coder)
     }
 
-    func presentScene() {
-        presentScene(gameScene)
-    }
-
     private func setupPreferences() {
         preferredFramesPerSecond = 120
 
         #if DEBUG
-        showsDrawCount = true
-        ignoresSiblingOrder = true
-        showsFPS = true
-        showsNodeCount = true
-        showsFields = true
-        showsPhysics = true
-        showsQuadCount = true
+        allowsCameraControl = true
+        showsStatistics = true
         #endif
     }
 }
-
-extension GameView: GameViewProtocol {}

@@ -7,7 +7,11 @@ final class MotionManager: CMMotionManager {
         startAccelerometerUpdates()
     }
 
-    public func getRotation() -> Double? {
-        return accelerometerData?.acceleration.x
+    public func getRotation() -> Float {
+        return Float(accelerometerData?.acceleration.x ?? 0)
+    }
+
+    public func getInclination() -> Float {
+        return Float(accelerometerData?.acceleration.y ?? 0)
     }
 }

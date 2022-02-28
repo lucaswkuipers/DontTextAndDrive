@@ -1,4 +1,5 @@
 import UIKit
+import SceneKit
 
 protocol GenericViewControllerDelegate: AnyObject {
     func viewDidLoad()
@@ -58,5 +59,3 @@ final class GenericViewController: UIViewController {
         delegate?.viewDidDisappear()
     }
 }
-
-extension GenericViewController: GameViewControllerProtocol {}

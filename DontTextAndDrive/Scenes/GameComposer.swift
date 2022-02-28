@@ -1,26 +1,17 @@
-import SpriteKit
+import SceneKit
 
 enum GameComposer {
     static func makeScene() -> UIViewController {
-        let viewController = GenericViewController()
-        let scene = GameScene()
+        guard let scene = SCNScene(named: "GameScene.scn") else { fatalError() }
+        let rootNode = GameNode()
+        let renderer = GameRenderer()
         let view = GameView()
-        let controllerManager = ControllerManager()
-        let brain = GameBrain()
-        let adapter = GameAdapter()
+        let viewController = GenericViewController()
 
-        adapter.viewController = viewController
-        adapter.controllerManager = controllerManager
-        adapter.view = view
-        adapter.scene = scene
-        adapter.brain = brain
-
-        viewController.delegate = adapter
-        controllerManager.delegate = adapter
-        scene.gameDelegate = adapter
-        brain.delegate = adapter
-
-        view.gameScene = scene
+        renderer.scene = scene
+        scene.rootNode.addChildNode(rootNode)
+        view.scene = scene
+        view.gameDelegate = renderer
         viewController.view = view
 
         return viewController
