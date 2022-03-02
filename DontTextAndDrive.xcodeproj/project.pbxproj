@@ -136,9 +136,9 @@
 		ECDF981627C4B001000281F1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EC08297C27CBD79700E2B781 /* GameScene.scn */,
 				ECDF981927C4B001000281F1 /* GameView.swift */,
 				ECDF981B27C4B001000281F1 /* GameComposer.swift */,
-				EC08297C27CBD79700E2B781 /* GameScene.scn */,
 				ECC77C2627CC5FEA00973368 /* GameRenderer.swift */,
 			);
 			path = Scenes;
