@@ -2,14 +2,16 @@ import SceneKit
 
 enum GameComposer {
     static func makeScene() -> UIViewController {
-        guard let scene = SCNScene(named: "GameScene.scn") else { fatalError() }
-        let renderer = GameRenderer()
-        let view = GameView()
         let viewController = GenericViewController()
+        let view = GameView()
+        let sceneView = GameSceneView()
+        guard let scene = SCNScene(named: "GameScene.scn") else { return UIViewController() }
+        let sceneRendererDelegate = GameSceneRendererDelegate()
 
-        renderer.scene = scene
-        view.scene = scene
-        view.gameDelegate = renderer
+        sceneView.scene = scene
+        sceneRendererDelegate.scene = scene
+        sceneView.renderer = sceneRendererDelegate
+        view.sceneView = sceneView
         viewController.view = view
 
         return viewController

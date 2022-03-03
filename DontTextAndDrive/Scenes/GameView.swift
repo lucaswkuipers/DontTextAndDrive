@@ -1,27 +1,30 @@
+import UIKit
 import SceneKit
 
-final class GameView: SCNView {
-    var gameDelegate: SCNSceneRendererDelegate? {
+protocol GameSceneViewProtocol: SCNView {}
+
+final class GameView: UIView {
+    var sceneView: GameSceneViewProtocol? {
         didSet {
-            delegate = gameDelegate
+            guard let sceneView = sceneView else { return }
+
+            addSubview(sceneView)
+            sceneView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                sceneView.topAnchor.constraint(equalTo: topAnchor),
+                sceneView.leftAnchor.constraint(equalTo: leftAnchor),
+                sceneView.rightAnchor.constraint(equalTo: rightAnchor),
+                sceneView.heightAnchor.constraint(equalToConstant: 500)
+            ])
         }
     }
 
     init() {
-        super.init(frame: Device.bounds, options: nil)
-        setupPreferences()
+        super.init(frame: .zero)
+        backgroundColor = .red
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-
-    private func setupPreferences() {
-        preferredFramesPerSecond = 120
-
-        #if DEBUG
-//        allowsCameraControl = true
-        showsStatistics = true
-        #endif
     }
 }

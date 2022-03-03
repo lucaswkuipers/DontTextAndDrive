@@ -1,6 +1,6 @@
 import SceneKit
 
-final class GameRenderer: NSObject, SCNSceneRendererDelegate {
+final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     var scene: SCNScene?
     let motion = MotionManager()
 

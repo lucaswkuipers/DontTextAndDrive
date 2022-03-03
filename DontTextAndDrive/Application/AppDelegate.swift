@@ -6,7 +6,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = AppWindowComposer.makeWindow()
-        print("Applicaiton finished launching with success!")
+        print("✅ App finished launching with success!")
         return true
     }
 }
