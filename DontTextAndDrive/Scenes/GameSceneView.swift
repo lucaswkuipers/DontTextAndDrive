@@ -10,6 +10,7 @@ final class GameSceneView: SCNView {
     init() {
         super.init(frame: Device.bounds, options: nil)
         setupPreferences()
+        isPlaying = false
     }
 
     required init?(coder: NSCoder) {
@@ -25,4 +26,9 @@ final class GameSceneView: SCNView {
     }
 }
 
-extension GameSceneView: GameSceneViewProtocol {}
+extension GameSceneView: GameSceneViewProtocol {
+    func unpauseGame() {
+        isPlaying = true
+        scene?.isPaused = false
+    }
+}

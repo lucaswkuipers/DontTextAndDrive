@@ -22,7 +22,7 @@ extension GenericViewControllerDelegate {
 }
 
 final class GenericViewController: UIViewController {
-    weak var delegate: GenericViewControllerDelegate?
+    var delegate: GenericViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

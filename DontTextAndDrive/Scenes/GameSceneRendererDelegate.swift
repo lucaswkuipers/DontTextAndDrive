@@ -2,38 +2,60 @@ import SceneKit
 
 final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     var scene: SCNScene?
-    let motion = MotionManager()
-
+    private let motion = MotionManager()
     private var lastTime = 0.0
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        if lastTime == 0.0 {
-            lastTime = time
-            return
-        }
+        let timePassed = getTimePassed(from: lastTime, to: time)
+        moveCarHorizontally(timePassed: timePassed)
+        updateTime(to: time)
+    }
 
-        let timePassed = time - lastTime
-        print("---")
-        print("Time passed: \(timePassed)")
-        print("Time: \(time)")
-        print("Last time: \(lastTime)")
-        print("---")
+    private func getTimePassed(from previousTime: TimeInterval, to currentTime: TimeInterval) -> Double {
+        guard previousTime > 0 else { return 0 }
+        let timePassed = currentTime - previousTime
+        logTime(previousTime: previousTime, currentTime: currentTime, timePassed: timePassed)
+        return timePassed
+    }
 
-        lastTime = time
+    private func updateTime(to currentTime: TimeInterval) {
+        lastTime = currentTime
+    }
 
+    private func moveCarHorizontally(timePassed: TimeInterval) {
 
-        let dxFactor: Float = 60 * 4
-        let car = scene?.rootNode.childNode(withName: "car", recursively: true)
-        let dx = motion.getRotation() * Float(timePassed) * dxFactor
-        print("Car dx: \(dx)")
+        // Apply force
+        guard let car = scene?.rootNode.childNode(withName: "car", recursively: true) else { return }
+        let dxFactor = 60.0 * 4
+        let dx = Float(motion.getRotation() * timePassed * dxFactor)
         let force = SCNVector3(x: dx, y: 0, z: 0)
-        car?.physicsBody?.applyForce(force, at: SCNVector3(x: 0, y: 0, z: 0), asImpulse: false)
+        car.physicsBody?.applyForce(force, at: SCNVector3(x: 0, y: 0, z: 0), asImpulse: false)
 
-        guard let pos = car?.presentation.worldPosition.x else { return }
-
+        // Constraint car to road
+        let position = car.presentation.worldPosition.x
         let bounds: Float = 4.5
-        print("Car x position: \(pos)")
+        car.position.x = position.clamped(to: bounds)
 
-        car?.position.x = pos.clamped(to: bounds)
+        // Log
+        logCarMovement(dx: dx, position: position)
+
+    }
+
+    // MARK: - DEBUG
+    private func logTime(previousTime: TimeInterval, currentTime: TimeInterval, timePassed: TimeInterval) {
+        #if DEBUG
+        print("---")
+        print("Last time: \(previousTime)")
+        print("Current time: \(currentTime)")
+        print("Time passed: \(timePassed)")
+        print("---")
+        #endif
+    }
+
+    private func logCarMovement(dx: Float, position: Float) {
+        #if DEBUG
+        print("Car dx: \(dx)")
+        print("Car x position: \(position)")
+        #endif
     }
 }
