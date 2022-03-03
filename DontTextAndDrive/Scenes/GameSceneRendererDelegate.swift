@@ -43,19 +43,15 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
 
     // MARK: - DEBUG
     private func logTime(previousTime: TimeInterval, currentTime: TimeInterval, timePassed: TimeInterval) {
-        #if DEBUG
-        print("---")
-        print("Last time: \(previousTime)")
-        print("Current time: \(currentTime)")
-        print("Time passed: \(timePassed)")
-        print("---")
-        #endif
+        log("---")
+        log("Last time: \(previousTime)")
+        log("Current time: \(currentTime)")
+        log("Time passed: \(timePassed)")
+        log("---")
     }
 
     private func logCarMovement(dx: Float, position: Float) {
-        #if DEBUG
-        print("Car dx: \(dx)")
-        print("Car x position: \(position)")
-        #endif
+        log("Car dx: \(dx)")
+        log("Car x position: \(position)")
     }
 }
