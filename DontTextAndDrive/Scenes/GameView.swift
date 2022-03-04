@@ -9,9 +9,11 @@ final class GameView: UIView {
         }
     }
 
+    private let keyboardView = KeyboardView()
+
     init() {
         super.init(frame: .zero)
-        backgroundColor = .systemBackground
+        backgroundColor = .opaqueSeparator
     }
 
     required init?(coder: NSCoder) {
@@ -20,6 +22,7 @@ final class GameView: UIView {
 
     private func setupViewHierarchy() {
         guard let sceneView = sceneView else { return }
+        addSubview(keyboardView)
         addSubview(sceneView)
     }
 
@@ -27,10 +30,14 @@ final class GameView: UIView {
         guard let sceneView = sceneView else { return }
         subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         NSLayoutConstraint.activate([
+            keyboardView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            keyboardView.leftAnchor.constraint(equalTo: leftAnchor),
+            keyboardView.rightAnchor.constraint(equalTo: rightAnchor),
+
             sceneView.topAnchor.constraint(equalTo: topAnchor),
             sceneView.leftAnchor.constraint(equalTo: leftAnchor),
             sceneView.rightAnchor.constraint(equalTo: rightAnchor),
-            sceneView.heightAnchor.constraint(equalToConstant: 500)
+            sceneView.bottomAnchor.constraint(equalTo: keyboardView.topAnchor)
         ])
     }
 }
