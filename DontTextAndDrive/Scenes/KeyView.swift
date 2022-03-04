@@ -40,6 +40,7 @@ final class KeyView: UIView {
     }
 
     @objc func didTapKey() {
+        SoundManager.shared.playKeySound()
         titleButton.backgroundColor = color
         transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
         //        log("Value: \(value)")
