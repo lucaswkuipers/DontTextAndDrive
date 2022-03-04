@@ -12,6 +12,7 @@
 		EC47AE2427D02FBA0021A748 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC47AE2327D02FBA0021A748 /* GameView.swift */; };
 		EC600E5D27D120CB001E1F17 /* log.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC600E5C27D120CB001E1F17 /* log.swift */; };
 		EC600E5F27D1225D001E1F17 /* DebugConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC600E5E27D1225D001E1F17 /* DebugConfig.swift */; };
+		EC77CA1C27D27BAD00DB43E3 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77CA1B27D27BAD00DB43E3 /* HapticsManager.swift */; };
 		EC7FC8C827D110E300BD612C /* GameAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC8C727D110E300BD612C /* GameAdapter.swift */; };
 		EC997F8527D189C60061EBF8 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC997F8427D189C60061EBF8 /* KeyboardView.swift */; };
 		EC997F8727D1BC450061EBF8 /* KeyboardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC997F8627D1BC450061EBF8 /* KeyboardRowView.swift */; };
@@ -41,6 +42,7 @@
 		EC47AE2327D02FBA0021A748 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EC600E5C27D120CB001E1F17 /* log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = log.swift; sourceTree = "<group>"; };
 		EC600E5E27D1225D001E1F17 /* DebugConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugConfig.swift; sourceTree = "<group>"; };
+		EC77CA1B27D27BAD00DB43E3 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		EC7FC8C727D110E300BD612C /* GameAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAdapter.swift; sourceTree = "<group>"; };
 		EC997F8427D189C60061EBF8 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		EC997F8627D1BC450061EBF8 /* KeyboardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardRowView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				ECBB212127C5EBA900E171C0 /* MotionManager.swift */,
 				EC997F8C27D1EA2E0061EBF8 /* SoundManager.swift */,
+				EC77CA1B27D27BAD00DB43E3 /* HapticsManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				ECDF982927C4B001000281F1 /* GameComposer.swift in Sources */,
 				EC997F8927D1C42E0061EBF8 /* KeyView.swift in Sources */,
 				ECDF982F27C4B001000281F1 /* Device.swift in Sources */,
+				EC77CA1C27D27BAD00DB43E3 /* HapticsManager.swift in Sources */,
 				ECDF982C27C4B001000281F1 /* AppWindowComposer.swift in Sources */,
 				EC600E5D27D120CB001E1F17 /* log.swift in Sources */,
 				ECC77C2727CC5FEA00973368 /* GameSceneRendererDelegate.swift in Sources */,
