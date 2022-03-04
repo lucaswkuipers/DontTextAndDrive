@@ -30,14 +30,14 @@ final class GameView: UIView {
         guard let sceneView = sceneView else { return }
         subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         NSLayoutConstraint.activate([
-            keyboardView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            keyboardView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5),
             keyboardView.leftAnchor.constraint(equalTo: leftAnchor),
             keyboardView.rightAnchor.constraint(equalTo: rightAnchor),
 
             sceneView.topAnchor.constraint(equalTo: topAnchor),
             sceneView.leftAnchor.constraint(equalTo: leftAnchor),
             sceneView.rightAnchor.constraint(equalTo: rightAnchor),
-            sceneView.bottomAnchor.constraint(equalTo: keyboardView.topAnchor)
+            sceneView.bottomAnchor.constraint(equalTo: keyboardView.topAnchor, constant: -5)
         ])
     }
 }

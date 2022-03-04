@@ -7,7 +7,7 @@ final class KeyboardView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = 12
+        stackView.spacing = 0
         return stackView
     }()
 
@@ -20,7 +20,7 @@ final class KeyboardView: UIView {
     private let topColumnStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 6
+        stackView.spacing = 0
         stackView.distribution = .fillEqually
         return stackView
     }()
@@ -30,7 +30,7 @@ final class KeyboardView: UIView {
     private let midColumnStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 6
+        stackView.spacing = 0
         stackView.distribution = .fillEqually
         return stackView
     }()
@@ -40,7 +40,7 @@ final class KeyboardView: UIView {
     private let bottomColumnStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 6
+        stackView.spacing = 0
         stackView.distribution = .fillEqually
         return stackView
     }()
@@ -50,7 +50,7 @@ final class KeyboardView: UIView {
     private let footerColumnStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 6
+        stackView.spacing = 0
         stackView.distribution = .fillProportionally
         return stackView
     }()
@@ -118,10 +118,10 @@ final class KeyboardView: UIView {
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 220),
 
-            keyRowStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            keyRowStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 5),
+            keyRowStackView.topAnchor.constraint(equalTo: topAnchor),
+            keyRowStackView.leftAnchor.constraint(equalTo: leftAnchor),
             keyRowStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            keyRowStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -5),
+            keyRowStackView.rightAnchor.constraint(equalTo: rightAnchor),
 
             topColumnStackView.topAnchor.constraint(equalTo: topContainerView.topAnchor),
             topColumnStackView.bottomAnchor.constraint(equalTo: topContainerView.bottomAnchor),
