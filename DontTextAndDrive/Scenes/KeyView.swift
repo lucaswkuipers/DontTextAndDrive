@@ -1,25 +1,43 @@
 import UIKit
 
-final class KeyView: UIView {
-    let baseWidth = 34
-    var units = 1
+protocol KeyViewDelegate {
+    func didTapKey(with value: String)
+}
 
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 24)
-        return label
+final class KeyView: UIView {
+    var delegate: KeyViewDelegate?
+    var units = 1
+    var title = ""
+    var value = ""
+    private let baseWidth = 32
+
+    private let titleButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = .systemFont(ofSize: 24)
+        button.contentVerticalAlignment = .top
+        return button
     }()
 
     init(units: Int = 1, title: String) {
-        self.titleLabel.text = title
+        self.units = units
+        self.title = title
+        self.value = title == "space" ? " " : title
+        self.titleButton.setTitle(title, for: .normal)
         super.init(frame: .zero)
         setupViewStyle()
         setupViewHierarchy()
         setupViewConstraints()
+        titleButton.addTarget(self, action: #selector(didTapKey), for: .touchDown)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+
+    @objc func didTapKey() {
+//        log("Value: \(value)")
+//        print("Title: \(title)")
+        delegate?.didTapKey(with: value)
     }
 
     private func setupViewStyle() {
@@ -28,7 +46,7 @@ final class KeyView: UIView {
     }
 
     private func setupViewHierarchy() {
-        addSubview(titleLabel)
+        addSubview(titleButton)
     }
 
     private func setupViewConstraints() {
@@ -36,8 +54,10 @@ final class KeyView: UIView {
 
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalToConstant: CGFloat(baseWidth * units)),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            titleButton.topAnchor.constraint(equalTo: topAnchor),
+            titleButton.leftAnchor.constraint(equalTo: leftAnchor),
+            titleButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            titleButton.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }
 }

@@ -5,23 +5,21 @@ final class KeyboardView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = 10
+        stackView.spacing = 12
         return stackView
     }()
 
     // q w e r t y u i o p
     private let topContainerView: UIView = {
         let view = UIView()
-//        view.backgroundColor = .red
         return view
     }()
 
     private let topColumnStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 8
-        stackView.distribution = .equalSpacing
-//        stackView.backgroundColor = .systemBlue
+        stackView.spacing = 6
+        stackView.distribution = .fillEqually
         return stackView
     }()
 
@@ -30,9 +28,8 @@ final class KeyboardView: UIView {
     private let midColumnStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 5
-        stackView.distribution = .equalSpacing
-        stackView.backgroundColor = .systemRed
+        stackView.spacing = 6
+        stackView.distribution = .fillEqually
         return stackView
     }()
 
@@ -41,9 +38,8 @@ final class KeyboardView: UIView {
     private let bottomColumnStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 5
-        stackView.distribution = .fill
-        stackView.backgroundColor = .systemGreen
+        stackView.spacing = 6
+        stackView.distribution = .fillEqually
         return stackView
     }()
 
@@ -52,9 +48,8 @@ final class KeyboardView: UIView {
     private let footerColumnStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 10
+        stackView.spacing = 6
         stackView.distribution = .fillProportionally
-        stackView.backgroundColor = .systemYellow
         return stackView
     }()
 
@@ -85,28 +80,33 @@ final class KeyboardView: UIView {
 
         let topKeys = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]
         for key in topKeys {
-            topColumnStackView.addArrangedSubview(KeyView(title: key))
+            let keyView = KeyView(title: key)
+            keyView.delegate = self
+            topColumnStackView.addArrangedSubview(keyView)
         }
-//
-//        let midKeys = ["a", "s", "d", "f", "g", "h", "j", "k", "l"]
-//        for key in midKeys {
-//            midColumnStackView.addArrangedSubview(KeyView(title: key))
-//        }
-//
-//        let bottomKeys = ["^", "z", "x", "c", "v", "b", "n", "m", "<"]
-//        for key in bottomKeys {
-//            bottomColumnStackView.addArrangedSubview(KeyView(title: key))
-//        }
-//
-//        let footerKeys = ["1", "space", ">"]
-//        for key in footerKeys {
-//            footerColumnStackView.addArrangedSubview(KeyView(title: key))
-//        }
+
+        let midKeys = ["a", "s", "d", "f", "g", "h", "j", "k", "l"]
+        for key in midKeys {
+            let keyView = KeyView(title: key)
+            keyView.delegate = self
+            midColumnStackView.addArrangedSubview(keyView)
+        }
+
+        let bottomKeys = ["z", "x", "c", "v", "b", "n", "m"]
+        for key in bottomKeys {
+            let keyView = KeyView(title: key)
+            keyView.delegate = self
+            bottomColumnStackView.addArrangedSubview(keyView)
+        }
+
+        let footerKey = "space"
+        let footerKeyView = KeyView(units: 6, title: footerKey)
+        footerKeyView.delegate = self
+        footerColumnStackView.addArrangedSubview(footerKeyView)
     }
 
     private func setupViewConstraints() {
         subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-//        subviews.forEach { _ in subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }}
         topContainerView.subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         midContainerView.subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         bottomContainerView.subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
@@ -114,7 +114,7 @@ final class KeyboardView: UIView {
 
 
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 250),
+            heightAnchor.constraint(equalToConstant: 220),
 
             keyRowStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             keyRowStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 5),
@@ -124,23 +124,14 @@ final class KeyboardView: UIView {
             topColumnStackView.topAnchor.constraint(equalTo: topContainerView.topAnchor),
             topColumnStackView.bottomAnchor.constraint(equalTo: topContainerView.bottomAnchor),
             topColumnStackView.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor),
-//            topColumnStackView.leftAnchor.constraint(greaterThanOrEqualTo: topContainerView.leftAnchor),
-//            topColumnStackView.rightAnchor.constraint(lessThanOrEqualTo: topContainerView.rightAnchor),
-//            topColumnStackView.leftAnchor.constraint(equalTo: topContainerView.leftAnchor),
-//            topColumnStackView.rightAnchor.constraint(equalTo: topContainerView.rightAnchor),
-
 
             midColumnStackView.topAnchor.constraint(equalTo: midContainerView.topAnchor),
             midColumnStackView.bottomAnchor.constraint(equalTo: midContainerView.bottomAnchor),
             midColumnStackView.centerXAnchor.constraint(equalTo: midContainerView.centerXAnchor),
-            midColumnStackView.leftAnchor.constraint(greaterThanOrEqualTo: midContainerView.leftAnchor),
-            midColumnStackView.rightAnchor.constraint(lessThanOrEqualTo: midContainerView.rightAnchor),
 
             bottomColumnStackView.topAnchor.constraint(equalTo: bottomContainerView.topAnchor),
-            bottomContainerView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor),
-            bottomContainerView.centerXAnchor.constraint(equalTo: bottomContainerView.centerXAnchor),
-            bottomColumnStackView.leftAnchor.constraint(greaterThanOrEqualTo: bottomContainerView.leftAnchor),
-            bottomColumnStackView.rightAnchor.constraint(lessThanOrEqualTo: bottomContainerView.rightAnchor),
+            bottomColumnStackView.bottomAnchor.constraint(equalTo: bottomContainerView.bottomAnchor),
+            bottomColumnStackView.centerXAnchor.constraint(equalTo: bottomContainerView.centerXAnchor),
 
             footerColumnStackView.topAnchor.constraint(equalTo: footerContainerView.topAnchor),
             footerColumnStackView.bottomAnchor.constraint(equalTo: footerContainerView.bottomAnchor),
@@ -148,5 +139,11 @@ final class KeyboardView: UIView {
             footerColumnStackView.leftAnchor.constraint(greaterThanOrEqualTo: footerContainerView.leftAnchor),
             footerColumnStackView.rightAnchor.constraint(lessThanOrEqualTo: footerContainerView.rightAnchor)
         ])
+    }
+}
+
+extension KeyboardView: KeyViewDelegate {
+    func didTapKey(with value: String) {
+        print("Tapped value: \(value)")
     }
 }

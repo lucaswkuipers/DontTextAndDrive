@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC08297927CBD70D00E2B781 /* Motionhelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08297827CBD70D00E2B781 /* Motionhelper.swift */; };
 		EC08297B27CBD75A00E2B781 /* VectorOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08297A27CBD75A00E2B781 /* VectorOperations.swift */; };
 		EC08297D27CBD79700E2B781 /* GameScene.scn in Resources */ = {isa = PBXBuildFile; fileRef = EC08297C27CBD79700E2B781 /* GameScene.scn */; };
 		EC47AE2427D02FBA0021A748 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC47AE2327D02FBA0021A748 /* GameView.swift */; };
@@ -36,7 +35,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EC08297827CBD70D00E2B781 /* Motionhelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motionhelper.swift; sourceTree = "<group>"; };
 		EC08297A27CBD75A00E2B781 /* VectorOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorOperations.swift; sourceTree = "<group>"; };
 		EC08297C27CBD79700E2B781 /* GameScene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = GameScene.scn; sourceTree = "<group>"; };
 		EC47AE2327D02FBA0021A748 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				ECBB212127C5EBA900E171C0 /* MotionManager.swift */,
-				EC08297827CBD70D00E2B781 /* Motionhelper.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -243,7 +240,6 @@
 				EC997F8927D1C42E0061EBF8 /* KeyView.swift in Sources */,
 				ECDF982F27C4B001000281F1 /* Device.swift in Sources */,
 				ECDF982C27C4B001000281F1 /* AppWindowComposer.swift in Sources */,
-				EC08297927CBD70D00E2B781 /* Motionhelper.swift in Sources */,
 				EC600E5D27D120CB001E1F17 /* log.swift in Sources */,
 				ECC77C2727CC5FEA00973368 /* GameSceneRendererDelegate.swift in Sources */,
 				EC997F8527D189C60061EBF8 /* KeyboardView.swift in Sources */,

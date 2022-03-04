@@ -14,7 +14,7 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private func getTimePassed(from previousTime: TimeInterval, to currentTime: TimeInterval) -> Double {
         guard previousTime > 0 else { return 0 }
         let timePassed = currentTime - previousTime
-        logTime(previousTime: previousTime, currentTime: currentTime, timePassed: timePassed)
+//        logTime(previousTime: previousTime, currentTime: currentTime, timePassed: timePassed)
         return timePassed
     }
 
@@ -37,7 +37,7 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
         car.position.x = position.clamped(to: bounds)
 
         // Log
-        logCarMovement(dx: dx, position: position)
+//        logCarMovement(dx: dx, position: position)
 
     }
 
