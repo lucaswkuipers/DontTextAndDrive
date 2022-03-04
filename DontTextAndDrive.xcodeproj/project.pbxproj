@@ -16,6 +16,7 @@
 		EC997F8527D189C60061EBF8 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC997F8427D189C60061EBF8 /* KeyboardView.swift */; };
 		EC997F8727D1BC450061EBF8 /* KeyboardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC997F8627D1BC450061EBF8 /* KeyboardRowView.swift */; };
 		EC997F8927D1C42E0061EBF8 /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC997F8827D1C42E0061EBF8 /* KeyView.swift */; };
+		EC997F8B27D1DB1A0061EBF8 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC997F8A27D1DB1A0061EBF8 /* AnimatedButton.swift */; };
 		ECBB211A27C5DF9300E171C0 /* Int+isBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB211927C5DF9300E171C0 /* Int+isBetween.swift */; };
 		ECBB211D27C5E16500E171C0 /* Double+isBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB211C27C5E16500E171C0 /* Double+isBetween.swift */; };
 		ECBB211F27C5E1DF00E171C0 /* CGFloat+isBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB211E27C5E1DF00E171C0 /* CGFloat+isBetween.swift */; };
@@ -44,6 +45,7 @@
 		EC997F8427D189C60061EBF8 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		EC997F8627D1BC450061EBF8 /* KeyboardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardRowView.swift; sourceTree = "<group>"; };
 		EC997F8827D1C42E0061EBF8 /* KeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
+		EC997F8A27D1DB1A0061EBF8 /* AnimatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
 		ECBB211927C5DF9300E171C0 /* Int+isBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+isBetween.swift"; sourceTree = "<group>"; };
 		ECBB211C27C5E16500E171C0 /* Double+isBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+isBetween.swift"; sourceTree = "<group>"; };
 		ECBB211E27C5E1DF00E171C0 /* CGFloat+isBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+isBetween.swift"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				EC997F8427D189C60061EBF8 /* KeyboardView.swift */,
 				EC997F8627D1BC450061EBF8 /* KeyboardRowView.swift */,
 				EC997F8827D1C42E0061EBF8 /* KeyView.swift */,
+				EC997F8A27D1DB1A0061EBF8 /* AnimatedButton.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				EC997F8927D1C42E0061EBF8 /* KeyView.swift in Sources */,
 				ECDF982F27C4B001000281F1 /* Device.swift in Sources */,
 				ECDF982C27C4B001000281F1 /* AppWindowComposer.swift in Sources */,
+				EC997F8B27D1DB1A0061EBF8 /* AnimatedButton.swift in Sources */,
 				EC600E5D27D120CB001E1F17 /* log.swift in Sources */,
 				ECC77C2727CC5FEA00973368 /* GameSceneRendererDelegate.swift in Sources */,
 				EC997F8527D189C60061EBF8 /* KeyboardView.swift in Sources */,

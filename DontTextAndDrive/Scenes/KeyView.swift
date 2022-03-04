@@ -5,6 +5,7 @@ protocol KeyViewDelegate {
 }
 
 final class KeyView: UIView {
+    let color: UIColor = .tintColor
     var delegate: KeyViewDelegate?
     var units = 1
     var title = ""
@@ -15,6 +16,8 @@ final class KeyView: UIView {
         let button = UIButton()
         button.titleLabel?.font = .systemFont(ofSize: 24)
         button.contentVerticalAlignment = .top
+        button.setTitleColor(.label, for: .normal)
+        button.layer.cornerRadius = 8
         return button
     }()
 
@@ -28,6 +31,8 @@ final class KeyView: UIView {
         setupViewHierarchy()
         setupViewConstraints()
         titleButton.addTarget(self, action: #selector(didTapKey), for: .touchDown)
+        titleButton.addTarget(self, action: #selector(didTouchUp), for: .touchUpInside)
+        titleButton.addTarget(self, action: #selector(didTouchUp), for: .touchUpOutside)
     }
 
     required init?(coder: NSCoder) {
@@ -35,9 +40,25 @@ final class KeyView: UIView {
     }
 
     @objc func didTapKey() {
+        titleButton.backgroundColor = color
 //        log("Value: \(value)")
 //        print("Title: \(title)")
         delegate?.didTapKey(with: value)
+    }
+
+    @objc func didTouchUp() {
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 0.5,
+            options: .curveEaseIn,
+            animations: { [weak self] in
+                self?.titleButton.backgroundColor = self?.color
+            }, completion: {_ in
+                self.titleButton.backgroundColor = .clear
+            }
+        )
     }
 
     private func setupViewStyle() {
