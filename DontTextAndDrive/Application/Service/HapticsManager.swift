@@ -3,30 +3,34 @@ import UIKit
 final class HapticsManager {
     static let shared = HapticsManager()
 
+    enum HapticPattern {
+        case primaryKeyPress
+        case deleteKeyPress
+        case modifierKeyPress
+
+        var style: UIImpactFeedbackGenerator.FeedbackStyle {
+            switch self {
+            case .primaryKeyPress:
+                return .rigid
+            case .modifierKeyPress:
+                return .heavy
+            case .deleteKeyPress:
+                return .soft
+            }
+        }
+
+        var intensity: CGFloat {
+            return 1
+        }
+    }
+
     private init() {}
 
-    func selectionVibrate() {
+    func play(hapticPattern haptic: HapticPattern) {
         DispatchQueue.main.async {
-            let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
-            selectionFeedbackGenerator.prepare()
-            selectionFeedbackGenerator.selectionChanged()
-        }
-    }
-
-    func impactVibration(style: UIImpactFeedbackGenerator.FeedbackStyle, at intensity: CGFloat) {
-        DispatchQueue.main.async {
-            let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: style)
+            let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: haptic.style)
             impactFeedbackGenerator.prepare()
-            impactFeedbackGenerator.impactOccurred(intensity: intensity)
-        }
-    }
-
-    func vibrate(for type: UINotificationFeedbackGenerator.FeedbackType) {
-        DispatchQueue.main.async {
-            let notificationGenerator = UINotificationFeedbackGenerator()
-            notificationGenerator.prepare()
-            notificationGenerator.notificationOccurred(type)
+            impactFeedbackGenerator.impactOccurred(intensity: haptic.intensity)
         }
     }
 }
-
