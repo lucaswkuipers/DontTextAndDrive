@@ -110,6 +110,14 @@ final class KeyView: UIButton {
     private let pressedColor: UIColor = .systemBlue
     private let fillColor = UIColor(named: "KeyBackground")
 
+    private let borderView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 8
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "KeyBackground")
@@ -151,6 +159,7 @@ final class KeyView: UIButton {
         }
 
         containerView.backgroundColor = pressedColor
+        borderView.backgroundColor = .clear
         containerView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         delegate?.didTapKey(with: value)
     }
@@ -164,6 +173,7 @@ final class KeyView: UIButton {
             options: .curveEaseIn,
             animations: { [weak self] in
                 self?.containerView.backgroundColor = self?.pressedColor
+                self?.borderView.backgroundColor = .clear
                 self?.containerView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             }, completion: {_ in
                 UIView.animate(
@@ -174,6 +184,7 @@ final class KeyView: UIButton {
                     options: .curveEaseIn,
                     animations: { [weak self] in
                         self?.containerView.backgroundColor = self?.fillColor
+                        self?.borderView.backgroundColor = .black
                         self?.containerView.transform = CGAffineTransform(scaleX: 1, y: 1)
                     }
                 )
@@ -186,6 +197,7 @@ final class KeyView: UIButton {
     }
 
     private func setupViewHierarchy() {
+        addSubview(borderView)
         addSubview(containerView)
         containerView.addSubview(keyLabel)
     }
@@ -200,6 +212,11 @@ final class KeyView: UIButton {
             containerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 3),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
             containerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -3),
+
+            borderView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            borderView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
+            borderView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 2),
+            borderView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
 
             keyLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -5),
             keyLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
