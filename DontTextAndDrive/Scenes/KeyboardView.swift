@@ -1,6 +1,8 @@
 import UIKit
 
 final class KeyboardView: UIView {
+    private var text = ""
+
     private let keyRowStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -144,6 +146,8 @@ final class KeyboardView: UIView {
 
 extension KeyboardView: KeyViewDelegate {
     func didTapKey(with value: String) {
+        text += value
         print("Tapped value: \(value)")
+        print("Text: \(text)")
     }
 }
