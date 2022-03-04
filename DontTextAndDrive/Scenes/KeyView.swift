@@ -41,22 +41,34 @@ final class KeyView: UIView {
 
     @objc func didTapKey() {
         titleButton.backgroundColor = color
-//        log("Value: \(value)")
-//        print("Title: \(title)")
+        transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+        //        log("Value: \(value)")
+        //        print("Title: \(title)")
         delegate?.didTapKey(with: value)
     }
 
     @objc func didTouchUp() {
         UIView.animate(
-            withDuration: 0.3,
+            withDuration: 0.2,
             delay: 0,
             usingSpringWithDamping: 0.5,
             initialSpringVelocity: 0.5,
             options: .curveEaseIn,
             animations: { [weak self] in
                 self?.titleButton.backgroundColor = self?.color
+                self?.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
             }, completion: {_ in
-                self.titleButton.backgroundColor = .clear
+                UIView.animate(
+                    withDuration: 0.2,
+                    delay: 0,
+                    usingSpringWithDamping: 0.5,
+                    initialSpringVelocity: 0.5,
+                    options: .curveEaseIn,
+                    animations: { [weak self] in
+                        self?.titleButton.backgroundColor = .clear
+                        self?.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    }
+                )
             }
         )
     }
