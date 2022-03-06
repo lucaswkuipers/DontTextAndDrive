@@ -8,7 +8,7 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private var roadMarks: [SCNNode] = []
 
     private var carNode: SCNNode?
-    private var carFrontVelocity: Float = 0.2 * 60 // m/s
+    private var carFrontVelocity = 8.3 // m/s
     private var carHorizontalPosition: Float = 0 // m/s
     private var carHorizontalVelocity: Float = 0 // m/s
     private let maximumCarHorizontalVelocity: Float = 2.5 // m/s
@@ -41,7 +41,7 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
 
         // Move road marks
         for roadMark in roadMarks {
-            roadMark.worldPosition.z += Float(timePassed * 6)
+            roadMark.worldPosition.z += Float(timePassed * carFrontVelocity)
         }
 
         // Loop road marks
