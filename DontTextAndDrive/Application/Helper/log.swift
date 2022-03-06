@@ -1,5 +1,7 @@
 func log<Message>(_ message: Message) {
     #if DEBUG
-    print(message)
+    if DebugConfig.showLog {
+        print(message)
+    }
     #endif
 }

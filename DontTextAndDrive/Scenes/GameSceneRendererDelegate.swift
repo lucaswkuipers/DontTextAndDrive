@@ -56,10 +56,10 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
         carHorizontalPosition.clamp(to: bounds)
         carNode.worldPosition.x = carHorizontalPosition
 
-        print("---")
-        print("Phone Rotation Percentange: \(motion.getRotationPercentage())")
-        print("Horizontal velocity: \(carHorizontalVelocity)")
-        print("Horizontal position: \(carNode.worldPosition.x)")
+        log("---")
+        log("Phone Rotation Percentange: \(motion.getRotationPercentage())")
+        log("Horizontal velocity: \(carHorizontalVelocity)")
+        log("Horizontal position: \(carNode.worldPosition.x)")
     }
 
     // MARK: - DEBUG
