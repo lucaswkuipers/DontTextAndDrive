@@ -5,6 +5,8 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private let motion = MotionManager()
     private var lastTime = 0.0
 
+    private var roadMarks: [SCNNode] = []
+
     private var carNode: SCNNode?
     private var carFrontVelocity: Float = 0.2 * 60 // m/s
     private var carHorizontalPosition: Float = 0 // m/s
@@ -19,12 +21,35 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private var lastSpawnedRoadMarkTime = 0.0
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        // First time
+        if lastTime == 0 && roadMarks.count <= 0 {
+            // Connect road marks
+            for i in -1...11 {
+                if let roadMarkNode = scene?.rootNode.childNode(withName: "road_mark_\(i)", recursively: true) {
+                    roadMarks.append(roadMarkNode)
+                }
+            }
+        }
+
         // Time Update
         let timePassed = getTimePassed(from: lastTime, to: time)
         updateTime(to: time)
+        if timePassed >= 0.1 { return }
 
         // Game loop
         moveCarHorizontally(timePassed: timePassed)
+
+        // Move road marks
+        for roadMark in roadMarks {
+            roadMark.worldPosition.z += Float(timePassed * 6)
+        }
+
+        // Loop road marks
+        for roadMark in roadMarks {
+            if roadMark.worldPosition.z > 5 {
+                roadMark.worldPosition.z = -55
+            }
+        }
     }
 
     private func getTimePassed(from previousTime: TimeInterval, to currentTime: TimeInterval) -> Double {

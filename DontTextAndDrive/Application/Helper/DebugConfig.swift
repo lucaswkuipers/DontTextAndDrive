@@ -1,5 +1,5 @@
 struct DebugConfig {
     private init() {}
 
-    static let showLog = true
+    static let showLog = false
 }

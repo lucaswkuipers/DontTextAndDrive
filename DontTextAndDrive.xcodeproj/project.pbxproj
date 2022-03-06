@@ -27,6 +27,7 @@
 		ECC7C35E27CD721F0063E58F /* Float+clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC7C35D27CD721F0063E58F /* Float+clamped.swift */; };
 		ECDBD14527D45C000037AF15 /* Double+clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDBD14427D45C000037AF15 /* Double+clamp.swift */; };
 		ECDBD14727D45C900037AF15 /* Float+clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDBD14627D45C900037AF15 /* Float+clamp.swift */; };
+		ECDBD14F27D498540037AF15 /* AppAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDBD14E27D498540037AF15 /* AppAdapter.swift */; };
 		ECDF982727C4B001000281F1 /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981927C4B001000281F1 /* GameSceneView.swift */; };
 		ECDF982927C4B001000281F1 /* GameComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981B27C4B001000281F1 /* GameComposer.swift */; };
 		ECDF982B27C4B001000281F1 /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981E27C4B001000281F1 /* GenericViewController.swift */; };
@@ -58,6 +59,7 @@
 		ECC7C35D27CD721F0063E58F /* Float+clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+clamped.swift"; sourceTree = "<group>"; };
 		ECDBD14427D45C000037AF15 /* Double+clamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+clamp.swift"; sourceTree = "<group>"; };
 		ECDBD14627D45C900037AF15 /* Float+clamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+clamp.swift"; sourceTree = "<group>"; };
+		ECDBD14E27D498540037AF15 /* AppAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdapter.swift; sourceTree = "<group>"; };
 		ECDF97FC27C4AFDF000281F1 /* DontTextAndDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontTextAndDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDF981927C4B001000281F1 /* GameSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		ECDF981B27C4B001000281F1 /* GameComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameComposer.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				ECDF982027C4B001000281F1 /* Assets.xcassets */,
 				ECDF982127C4B001000281F1 /* LaunchScreen.storyboard */,
 				ECDF982427C4B001000281F1 /* AppDelegate.swift */,
+				ECDBD14E27D498540037AF15 /* AppAdapter.swift */,
 				ECDF981F27C4B001000281F1 /* AppWindowComposer.swift */,
 				ECDF981E27C4B001000281F1 /* GenericViewController.swift */,
 				ECDF982327C4B001000281F1 /* Device.swift */,
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECBB212227C5EBA900E171C0 /* MotionManager.swift in Sources */,
+				ECDBD14F27D498540037AF15 /* AppAdapter.swift in Sources */,
 				EC600E5F27D1225D001E1F17 /* DebugConfig.swift in Sources */,
 				ECBB211D27C5E16500E171C0 /* Double+isBetween.swift in Sources */,
 				ECDF982927C4B001000281F1 /* GameComposer.swift in Sources */,

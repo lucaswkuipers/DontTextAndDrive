@@ -147,7 +147,7 @@ final class KeyboardView: UIView {
 extension KeyboardView: KeyViewDelegate {
     func didTapKey(with value: String) {
         text += value
-        print("Tapped value: \(value)")
-        print("Text: \(text)")
+        log("Tapped value: \(value)")
+        log("Text: \(text)")
     }
 }

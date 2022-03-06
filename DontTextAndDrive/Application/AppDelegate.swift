@@ -9,4 +9,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         log("✅ App finished launching with success!")
         return true
     }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        AppAdapter.shared.willApplicationBecomeInactive()
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        AppAdapter.shared.didApplicationBecomeActive()
+    }
 }

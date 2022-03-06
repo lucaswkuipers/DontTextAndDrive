@@ -16,6 +16,7 @@ enum GameComposer {
         sceneView.renderer = sceneRendererDelegate
         view.sceneView = sceneView
         viewController.view = view
+        AppAdapter.shared.sceneView = sceneView
 
         return viewController
     }
