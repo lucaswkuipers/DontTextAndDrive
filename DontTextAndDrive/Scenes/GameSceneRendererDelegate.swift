@@ -60,14 +60,14 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
         }
 
         // Move  cars
-        carNode?.worldPosition.z += Float(timePassed * (playerFrontVelocity * 2))
+        carNode?.worldPosition.z += Float(timePassed * (playerFrontVelocity * 3))
 
         if let carNode = carNode {
             if carNode.worldPosition.z  > 5 {
                 carNode.worldPosition.z = -55
+                carNode.worldPosition.x = Float(Double.random(in: (-2.5...2.5)))
             }
         }
-
 
         // Loop road marks
         for roadMark in roadMarks {
