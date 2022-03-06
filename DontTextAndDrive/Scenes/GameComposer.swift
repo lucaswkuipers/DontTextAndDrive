@@ -3,7 +3,6 @@ import SceneKit
 enum GameComposer {
     static func makeScene() -> UIViewController? {
         guard let scene = SCNScene(named: "GameScene.scn") else { return nil }
-        scene.isPaused = true
         let viewController = GenericViewController()
         let view = GameView()
         let sceneView = GameSceneView()

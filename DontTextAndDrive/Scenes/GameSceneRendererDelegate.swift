@@ -5,16 +5,35 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private let motion = MotionManager()
     private var lastTime = 0.0
 
+    private var carNode: SCNNode?
+    private var carFrontVelocity: Float = 0.2 * 60
+    private var carHorizontalPosition: Float = 0
+    private var carHorizontalVelocity: Float = 0
+    private let maximumCarHorizontalVelocity: Float = 3
+    private let carWidth = 1.76784
+    private let leftRoadBoundary = -3.7
+    private let rightRoadBoundary = 3.7
+
+    // Road mark
+    private var lastSpawnedRoadMarkTime = 0.0
+    private var roadMarks: [SCNNode] = []
+
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if carNode == nil {
+            carNode = scene?.rootNode.childNode(withName: "camera", recursively: false)
+        }
+
+        // Time Update
         let timePassed = getTimePassed(from: lastTime, to: time)
-        moveCarHorizontally(timePassed: timePassed)
         updateTime(to: time)
+
+        // Game loop
+        moveCarHorizontally(timePassed: timePassed)
     }
 
     private func getTimePassed(from previousTime: TimeInterval, to currentTime: TimeInterval) -> Double {
         guard previousTime > 0 else { return 0 }
         let timePassed = currentTime - previousTime
-//        logTime(previousTime: previousTime, currentTime: currentTime, timePassed: timePassed)
         return timePassed
     }
 
@@ -23,22 +42,25 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     }
 
     private func moveCarHorizontally(timePassed: TimeInterval) {
+        guard let carNode = carNode else { return }
 
         // Apply force
-        guard let car = scene?.rootNode.childNode(withName: "car", recursively: true) else { return }
-        let dxFactor = 60.0 * 4
-        let dx = Float(motion.getRotation() * timePassed * dxFactor)
-        let force = SCNVector3(x: dx, y: 0, z: 0)
-        car.physicsBody?.applyForce(force, at: SCNVector3(x: 0, y: 0, z: 0), asImpulse: false)
+        let factor = 30.0 * 60.0
+        let bounds: Float = Float(abs(rightRoadBoundary - carWidth / 2))
+        var carHorizontalVelocity = Float(motion.getRotation() * factor * timePassed)
+        carHorizontalVelocity = carHorizontalVelocity.clamped(to: maximumCarHorizontalVelocity)
+        carHorizontalPosition += carHorizontalVelocity * Float(timePassed)
+        carHorizontalPosition = carHorizontalPosition.clamped(to: bounds)
 
         // Constraint car to road
-        let position = car.presentation.worldPosition.x
-        let bounds: Float = 4.5
-        car.position.x = position.clamped(to: bounds)
+        carNode.worldPosition.x = carHorizontalPosition
 
-        // Log
-//        logCarMovement(dx: dx, position: position)
+        print("Rotation: \(motion.getRotation())")
+        print("Horizontal velocity: \(carHorizontalVelocity)")
+        print("Horizontal position: \(carNode.worldPosition.x)")
+        print("Moving car horizontally - : \(carNode.worldPosition.x)")
 
+        self.carHorizontalVelocity = carHorizontalVelocity
     }
 
     // MARK: - DEBUG
@@ -48,10 +70,5 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
         log("Current time: \(currentTime)")
         log("Time passed: \(timePassed)")
         log("---")
-    }
-
-    private func logCarMovement(dx: Float, position: Float) {
-        log("Car dx: \(dx)")
-        log("Car x position: \(position)")
     }
 }
