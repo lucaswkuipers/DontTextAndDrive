@@ -6,7 +6,6 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private var lastTime = 0.0
 
     private var roadMarks: [SCNNode] = []
-
     private var carNodes: [SCNNode] = []
     private var lastSpawnedCarTime = 0.0
 
@@ -20,14 +19,8 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private let friction: Float = 0.96
     private let turnVelocity: Float = 0.2
 
-    // Road mark
-    private var lastSpawnedRoadMarkTime = 0.0
-
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        // First time
-        if lastTime == 0 && roadMarks.count <= 0 {
-            connectRoadMarks()
-        }
+        connectRoadMarksIfFirstTime()
 
         // Time Update
         let timePassed = getTimePassed(from: lastTime, to: time)
@@ -35,11 +28,10 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
         if timePassed >= 0.1 { return }
 
         // Game loop
-        moveCarHorizontally(timePassed: timePassed)
         spawnCars(currentTime: time)
-
-        moveRoadMarks(timePassed: timePassed)
         moveCars(timePassed: timePassed)
+        moveRoadMarks(timePassed: timePassed)
+        moveCarHorizontally(timePassed: timePassed)
     }
 
     private func getTimePassed(from previousTime: TimeInterval, to currentTime: TimeInterval) -> Double {
@@ -80,8 +72,8 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private func spawnCars(currentTime: TimeInterval) {
         let timePassed = currentTime - lastSpawnedCarTime
         let randomVariation = Double.random(in: -3...3)
-        let spawningDelta = 7.5
-        let maxCarCount = 7
+        let spawningDelta = 8.5
+        let maxCarCount = 6
         guard timePassed > spawningDelta + randomVariation,
               carNodes.count < maxCarCount else { return }
 
@@ -116,7 +108,8 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
         }
     }
 
-    private func connectRoadMarks() {
+    private func connectRoadMarksIfFirstTime() {
+        guard lastTime == 0 && roadMarks.count <= 0 else { return }
         for i in -1...11 {
             if let roadMarkNode = scene?.rootNode.childNode(withName: "road_mark_\(i)", recursively: true) {
                 roadMarks.append(roadMarkNode)
