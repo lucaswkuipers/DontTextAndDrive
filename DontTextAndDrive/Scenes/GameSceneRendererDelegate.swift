@@ -10,13 +10,10 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private var carHorizontalPosition: Float = 0 // m/s
     private var carHorizontalVelocity: Float = 0 // m/s
     private let maximumCarHorizontalVelocity: Float = 2.5 // m/s
-    private let carWidth = 1.76784 // m
-    private let leftRoadBoundary = -3.7 // m
-    private let rightRoadBoundary = 3.7 // m
-    private let carMass = 1885.0 // kg
-    private let carTurningForce: Double = 5
-    private let groundCarFrictionCoefficient = 0.7
-    private let gravityAcceleration = 9.8 // m/s^2
+    private let carWidth: Float = 1.76784 // m
+    private let roadBounds: Float = 3.7 // m
+    private let friction: Float = 0.96
+    private let turnVelocity: Float = 0.1
 
     // Road mark
     private var lastSpawnedRoadMarkTime = 0.0
@@ -46,28 +43,21 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
         }
 
         guard let carNode = carNode else { return }
-
         let carTurnPercentage = Float(motion.getRotationPercentage())
-//        let targetVelocity = maximumCarHorizontalVelocity * Float(carTurnPercentage)
-
-
 
         // Velocity
-        carHorizontalVelocity += carTurnPercentage * 0.1
-        carHorizontalVelocity *= 0.96
-
+        carHorizontalVelocity += carTurnPercentage * turnVelocity
+        carHorizontalVelocity *= friction
         carHorizontalVelocity.clamp(to: maximumCarHorizontalVelocity)
 
-
-
         // Position
-        let bounds: Float = Float(abs(rightRoadBoundary - carWidth / 2))
+        let bounds = abs(roadBounds - carWidth / 2)
         carHorizontalPosition += carHorizontalVelocity * Float(timePassed)
         carHorizontalPosition.clamp(to: bounds)
         carNode.worldPosition.x = carHorizontalPosition
 
         print("---")
-        print("Phone Rotation Percetange: \(motion.getRotationPercentage())")
+        print("Phone Rotation Percentange: \(motion.getRotationPercentage())")
         print("Horizontal velocity: \(carHorizontalVelocity)")
         print("Horizontal position: \(carNode.worldPosition.x)")
     }
