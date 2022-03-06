@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		EC08297D27CBD79700E2B781 /* GameScene.scn in Resources */ = {isa = PBXBuildFile; fileRef = EC08297C27CBD79700E2B781 /* GameScene.scn */; };
+		EC08B66C27D4A611003AFB54 /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08B66B27D4A611003AFB54 /* GameSceneView.swift */; };
+		EC0A272B27D4AD3C00CF761C /* car.dae in Resources */ = {isa = PBXBuildFile; fileRef = EC0A272A27D4AD3C00CF761C /* car.dae */; };
 		EC47AE2427D02FBA0021A748 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC47AE2327D02FBA0021A748 /* GameView.swift */; };
 		EC600E5D27D120CB001E1F17 /* log.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC600E5C27D120CB001E1F17 /* log.swift */; };
 		EC600E5F27D1225D001E1F17 /* DebugConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC600E5E27D1225D001E1F17 /* DebugConfig.swift */; };
-		EC6AEE0827D4A3A8004B4D04 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6AEE0727D4A3A8004B4D04 /* art.scnassets */; };
 		EC77CA1C27D27BAD00DB43E3 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77CA1B27D27BAD00DB43E3 /* HapticsManager.swift */; };
 		EC7FC8C827D110E300BD612C /* GameAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FC8C727D110E300BD612C /* GameAdapter.swift */; };
 		EC997F8527D189C60061EBF8 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC997F8427D189C60061EBF8 /* KeyboardView.swift */; };
@@ -29,7 +30,6 @@
 		ECDBD14527D45C000037AF15 /* Double+clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDBD14427D45C000037AF15 /* Double+clamp.swift */; };
 		ECDBD14727D45C900037AF15 /* Float+clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDBD14627D45C900037AF15 /* Float+clamp.swift */; };
 		ECDBD14F27D498540037AF15 /* AppAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDBD14E27D498540037AF15 /* AppAdapter.swift */; };
-		ECDF982727C4B001000281F1 /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981927C4B001000281F1 /* GameSceneView.swift */; };
 		ECDF982927C4B001000281F1 /* GameComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981B27C4B001000281F1 /* GameComposer.swift */; };
 		ECDF982B27C4B001000281F1 /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981E27C4B001000281F1 /* GenericViewController.swift */; };
 		ECDF982C27C4B001000281F1 /* AppWindowComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981F27C4B001000281F1 /* AppWindowComposer.swift */; };
@@ -41,10 +41,11 @@
 
 /* Begin PBXFileReference section */
 		EC08297C27CBD79700E2B781 /* GameScene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = GameScene.scn; sourceTree = "<group>"; };
+		EC08B66B27D4A611003AFB54 /* GameSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
+		EC0A272A27D4AD3C00CF761C /* car.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = car.dae; sourceTree = "<group>"; };
 		EC47AE2327D02FBA0021A748 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EC600E5C27D120CB001E1F17 /* log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = log.swift; sourceTree = "<group>"; };
 		EC600E5E27D1225D001E1F17 /* DebugConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugConfig.swift; sourceTree = "<group>"; };
-		EC6AEE0727D4A3A8004B4D04 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		EC77CA1B27D27BAD00DB43E3 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		EC7FC8C727D110E300BD612C /* GameAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAdapter.swift; sourceTree = "<group>"; };
 		EC997F8427D189C60061EBF8 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		ECDBD14627D45C900037AF15 /* Float+clamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+clamp.swift"; sourceTree = "<group>"; };
 		ECDBD14E27D498540037AF15 /* AppAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdapter.swift; sourceTree = "<group>"; };
 		ECDF97FC27C4AFDF000281F1 /* DontTextAndDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontTextAndDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECDF981927C4B001000281F1 /* GameSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		ECDF981B27C4B001000281F1 /* GameComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameComposer.swift; sourceTree = "<group>"; };
 		ECDF981E27C4B001000281F1 /* GenericViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericViewController.swift; sourceTree = "<group>"; };
 		ECDF981F27C4B001000281F1 /* AppWindowComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWindowComposer.swift; sourceTree = "<group>"; };
@@ -146,8 +146,9 @@
 		ECDF981627C4B001000281F1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EC0A272A27D4AD3C00CF761C /* car.dae */,
 				EC08297C27CBD79700E2B781 /* GameScene.scn */,
-				ECDF981927C4B001000281F1 /* GameSceneView.swift */,
+				EC08B66B27D4A611003AFB54 /* GameSceneView.swift */,
 				ECDF981B27C4B001000281F1 /* GameComposer.swift */,
 				ECC77C2627CC5FEA00973368 /* GameSceneRendererDelegate.swift */,
 				EC47AE2327D02FBA0021A748 /* GameView.swift */,
@@ -172,7 +173,6 @@
 				ECDF981F27C4B001000281F1 /* AppWindowComposer.swift */,
 				ECDF981E27C4B001000281F1 /* GenericViewController.swift */,
 				ECDF982327C4B001000281F1 /* Device.swift */,
-				EC6AEE0727D4A3A8004B4D04 /* art.scnassets */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -235,9 +235,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC0A272B27D4AD3C00CF761C /* car.dae in Resources */,
 				ECDF982E27C4B001000281F1 /* LaunchScreen.storyboard in Resources */,
 				ECDF982D27C4B001000281F1 /* Assets.xcassets in Resources */,
-				EC6AEE0827D4A3A8004B4D04 /* art.scnassets in Resources */,
 				EC08297D27CBD79700E2B781 /* GameScene.scn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +252,7 @@
 				ECBB212227C5EBA900E171C0 /* MotionManager.swift in Sources */,
 				ECDBD14F27D498540037AF15 /* AppAdapter.swift in Sources */,
 				EC600E5F27D1225D001E1F17 /* DebugConfig.swift in Sources */,
+				EC08B66C27D4A611003AFB54 /* GameSceneView.swift in Sources */,
 				ECBB211D27C5E16500E171C0 /* Double+isBetween.swift in Sources */,
 				ECDF982927C4B001000281F1 /* GameComposer.swift in Sources */,
 				ECDBD14727D45C900037AF15 /* Float+clamp.swift in Sources */,
@@ -266,7 +267,6 @@
 				EC7FC8C827D110E300BD612C /* GameAdapter.swift in Sources */,
 				EC997F8D27D1EA2E0061EBF8 /* SoundManager.swift in Sources */,
 				ECDBD14527D45C000037AF15 /* Double+clamp.swift in Sources */,
-				ECDF982727C4B001000281F1 /* GameSceneView.swift in Sources */,
 				ECBB211A27C5DF9300E171C0 /* Int+isBetween.swift in Sources */,
 				ECC7C35E27CD721F0063E58F /* Float+clamped.swift in Sources */,
 				EC997F8727D1BC450061EBF8 /* KeyboardRowView.swift in Sources */,

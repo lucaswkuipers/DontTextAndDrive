@@ -8,11 +8,13 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private var roadMarks: [SCNNode] = []
 
     private var carNode: SCNNode?
-    private var carFrontVelocity = 8.3 // m/s
-    private var carHorizontalPosition: Float = 0 // m/s
-    private var carHorizontalVelocity: Float = 0 // m/s
-    private let maximumCarHorizontalVelocity: Float = 2.5 // m/s
-    private let carWidth: Float = 1.76784 // m
+
+    private var playerNode: SCNNode?
+    private var playerFrontVelocity = 8.3 // m/s
+    private var playerHorizontalPosition: Float = 0 // m/s
+    private var playerHorizontalVelocity: Float = 0 // m/s
+    private let maximumPlayerHorizontalVelocity: Float = 2.5 // m/s
+    private let playerWidth: Float = 1.76784 // m
     private let roadBounds: Float = 3.7 // m
     private let friction: Float = 0.96
     private let turnVelocity: Float = 0.1
@@ -31,6 +33,19 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
             }
         }
 
+        if lastTime == 0 && carNode == nil {
+            let carScene = SCNScene(named: "car.dae")
+            carNode = carScene?.rootNode.childNode(withName: "car", recursively: false)
+            print(carScene)
+            print(carNode)
+            if let carNode = carNode {
+                scene?.rootNode.addChildNode(carNode)
+                carNode.position.y = 0
+                carNode.position.x = -2.5
+                carNode.position.z = -55
+            }
+        }
+
         // Time Update
         let timePassed = getTimePassed(from: lastTime, to: time)
         updateTime(to: time)
@@ -41,8 +56,18 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
 
         // Move road marks
         for roadMark in roadMarks {
-            roadMark.worldPosition.z += Float(timePassed * carFrontVelocity)
+            roadMark.worldPosition.z += Float(timePassed * playerFrontVelocity)
         }
+
+        // Move  cars
+        carNode?.worldPosition.z += Float(timePassed * (playerFrontVelocity * 2))
+
+        if let carNode = carNode {
+            if carNode.worldPosition.z  > 5 {
+                carNode.worldPosition.z = -55
+            }
+        }
+
 
         // Loop road marks
         for roadMark in roadMarks {
@@ -63,27 +88,27 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     }
 
     private func moveCarHorizontally(timePassed: TimeInterval) {
-        if carNode == nil {
-            carNode = scene?.rootNode.childNode(withName: "camera", recursively: false)
+        if playerNode == nil {
+            playerNode = scene?.rootNode.childNode(withName: "camera", recursively: false)
         }
 
-        guard let carNode = carNode else { return }
+        guard let carNode = playerNode else { return }
         let carTurnPercentage = Float(motion.getRotationPercentage())
 
         // Velocity
-        carHorizontalVelocity += carTurnPercentage * turnVelocity
-        carHorizontalVelocity *= friction
-        carHorizontalVelocity.clamp(to: maximumCarHorizontalVelocity)
+        playerHorizontalVelocity += carTurnPercentage * turnVelocity
+        playerHorizontalVelocity *= friction
+        playerHorizontalVelocity.clamp(to: maximumPlayerHorizontalVelocity)
 
         // Position
-        let bounds = abs(roadBounds - carWidth / 2)
-        carHorizontalPosition += carHorizontalVelocity * Float(timePassed)
-        carHorizontalPosition.clamp(to: bounds)
-        carNode.worldPosition.x = carHorizontalPosition
+        let bounds = abs(roadBounds - playerWidth / 2)
+        playerHorizontalPosition += playerHorizontalVelocity * Float(timePassed)
+        playerHorizontalPosition.clamp(to: bounds)
+        carNode.worldPosition.x = playerHorizontalPosition
 
         log("---")
         log("Phone Rotation Percentange: \(motion.getRotationPercentage())")
-        log("Horizontal velocity: \(carHorizontalVelocity)")
+        log("Horizontal velocity: \(playerHorizontalVelocity)")
         log("Horizontal position: \(carNode.worldPosition.x)")
     }
 
