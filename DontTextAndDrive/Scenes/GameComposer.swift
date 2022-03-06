@@ -8,6 +8,8 @@ enum GameComposer {
         let sceneView = GameSceneView()
         let sceneRendererDelegate = GameSceneRendererDelegate()
         let adapter = GameAdapter()
+        scene.fogEndDistance = 500
+        scene.fogStartDistance = 450
 
         viewController.delegate = adapter
         adapter.sceneView = sceneView
