@@ -19,7 +19,7 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private let playerWidth: Float = 1.76784 // m
     private let roadBounds: Float = 3.7 // m
     private let friction: Float = 0.96
-    private let turnVelocity: Float = 0.1
+    private let turnVelocity: Float = 0.2
 
     // Road mark
     private var lastSpawnedRoadMarkTime = 0.0
@@ -57,7 +57,7 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
         moveCarHorizontally(timePassed: timePassed)
 
         // Spawn cars
-        if time - lastSpawnedCarTime + Double.random(in: -2...1) > 3 && carNodes.count < 6 {
+        if time - lastSpawnedCarTime + Double.random(in: -2...0) > 3.5 && carNodes.count < 7 {
             let carScene = SCNScene(named: "car.dae")
             carNode = carScene?.rootNode.childNode(withName: "car", recursively: false)
             if let carNode = carNode {
