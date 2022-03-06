@@ -8,7 +8,6 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private var roadMarks: [SCNNode] = []
 
     private var carNodes: [SCNNode] = []
-    private var carNode: SCNNode?
     private var lastSpawnedCarTime = 0.0
 
     private var playerNode: SCNNode?
@@ -27,26 +26,8 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         // First time
         if lastTime == 0 && roadMarks.count <= 0 {
-            // Connect road marks
-            for i in -1...11 {
-                if let roadMarkNode = scene?.rootNode.childNode(withName: "road_mark_\(i)", recursively: true) {
-                    roadMarks.append(roadMarkNode)
-                }
-            }
+            connectRoadMarks()
         }
-
-//        if lastTime == 0 && carNode == nil {
-//            let carScene = SCNScene(named: "car.dae")
-//            carNode = carScene?.rootNode.childNode(withName: "car", recursively: false)
-////            print(carScene)
-////            print(carNode)
-//            if let carNode = carNode {
-//                scene?.rootNode.addChildNode(carNode)
-//                carNode.position.y = 0
-//                carNode.position.x = -2.5
-//                carNode.position.z = -55
-//            }
-//        }
 
         // Time Update
         let timePassed = getTimePassed(from: lastTime, to: time)
@@ -55,42 +36,10 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
 
         // Game loop
         moveCarHorizontally(timePassed: timePassed)
+        spawnCars(currentTime: time)
 
-        // Spawn cars
-        if time - lastSpawnedCarTime + Double.random(in: -2...0) > 3.5 && carNodes.count < 7 {
-            let carScene = SCNScene(named: "car.dae")
-            carNode = carScene?.rootNode.childNode(withName: "car", recursively: false)
-            if let carNode = carNode {
-                scene?.rootNode.addChildNode(carNode)
-                carNode.position.y = 0
-                carNode.position.x = -2.5
-                carNode.position.z = -500
-                carNodes.append(carNode)
-            }
-            lastSpawnedCarTime = time
-        }
-
-        // Move road marks
-        for roadMark in roadMarks {
-            roadMark.worldPosition.z += Float(timePassed * playerFrontVelocity)
-        }
-
-        // Move  cars
-        for carNode in carNodes {
-            carNode.worldPosition.z += Float(timePassed * (playerFrontVelocity * 3))
-
-            if carNode.worldPosition.z  > 5 {
-                carNode.worldPosition.z = -505
-                carNode.worldPosition.x = Float(Double.random(in: (-2.5...2.5)))
-            }
-        }
-
-        // Loop road marks
-        for roadMark in roadMarks {
-            if roadMark.worldPosition.z > 5 {
-                roadMark.worldPosition.z = -55
-            }
-        }
+        moveRoadMarks(timePassed: timePassed)
+        moveCars(timePassed: timePassed)
     }
 
     private func getTimePassed(from previousTime: TimeInterval, to currentTime: TimeInterval) -> Double {
@@ -127,6 +76,54 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
         log("Horizontal velocity: \(playerHorizontalVelocity)")
         log("Horizontal position: \(carNode.worldPosition.x)")
     }
+
+    private func spawnCars(currentTime: TimeInterval) {
+        let timePassed = currentTime - lastSpawnedCarTime
+        let randomVariation = Double.random(in: -3...3)
+        let spawningDelta = 7.5
+        let maxCarCount = 7
+        guard timePassed > spawningDelta + randomVariation,
+              carNodes.count < maxCarCount else { return }
+
+        let carScene = SCNScene(named: "car.dae")
+        guard let carNode = carScene?.rootNode.childNode(withName: "car", recursively: false) else { return }
+        scene?.rootNode.addChildNode(carNode)
+        carNode.position.y = 0
+        carNode.position.x = -2.5
+        carNode.position.z = -500
+        carNodes.append(carNode)
+        lastSpawnedCarTime = currentTime
+    }
+
+    private func moveCars(timePassed: TimeInterval) {
+        for carNode in carNodes {
+            carNode.worldPosition.z += Float(timePassed * (playerFrontVelocity * 3))
+
+            if carNode.worldPosition.z  > 5 {
+                carNode.worldPosition.z = -505
+                carNode.worldPosition.x = Float(Double.random(in: (-2.5...2.5)))
+            }
+        }
+    }
+
+    private func moveRoadMarks(timePassed: TimeInterval) {
+        for roadMark in roadMarks {
+            roadMark.worldPosition.z += Float(timePassed * playerFrontVelocity)
+
+            if roadMark.worldPosition.z > 5 {
+                roadMark.worldPosition.z = -55
+            }
+        }
+    }
+
+    private func connectRoadMarks() {
+        for i in -1...11 {
+            if let roadMarkNode = scene?.rootNode.childNode(withName: "road_mark_\(i)", recursively: true) {
+                roadMarks.append(roadMarkNode)
+            }
+        }
+    }
+    
 
     // MARK: - DEBUG
     private func logTime(previousTime: TimeInterval, currentTime: TimeInterval, timePassed: TimeInterval) {
