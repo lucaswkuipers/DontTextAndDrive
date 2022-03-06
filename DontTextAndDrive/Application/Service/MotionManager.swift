@@ -1,7 +1,8 @@
 import CoreMotion
 
 final class MotionManager: CMMotionManager {
-    private let maximumRotation = 0.125
+//    private let maximumRotation = 0.125
+    private let maximumRotation = 0.2
 
     override init() {
         super.init()

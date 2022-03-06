@@ -30,6 +30,7 @@
 		ECDBD14727D45C900037AF15 /* Float+clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDBD14627D45C900037AF15 /* Float+clamp.swift */; };
 		ECDBD14927D46B660037AF15 /* Double+decrease.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDBD14827D46B660037AF15 /* Double+decrease.swift */; };
 		ECDBD14B27D476520037AF15 /* Float+decrease.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDBD14A27D476520037AF15 /* Float+decrease.swift */; };
+		ECDBD14D27D47A490037AF15 /* Float+approach.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDBD14C27D47A490037AF15 /* Float+approach.swift */; };
 		ECDF982727C4B001000281F1 /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981927C4B001000281F1 /* GameSceneView.swift */; };
 		ECDF982927C4B001000281F1 /* GameComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981B27C4B001000281F1 /* GameComposer.swift */; };
 		ECDF982B27C4B001000281F1 /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDF981E27C4B001000281F1 /* GenericViewController.swift */; };
@@ -64,6 +65,7 @@
 		ECDBD14627D45C900037AF15 /* Float+clamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+clamp.swift"; sourceTree = "<group>"; };
 		ECDBD14827D46B660037AF15 /* Double+decrease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+decrease.swift"; sourceTree = "<group>"; };
 		ECDBD14A27D476520037AF15 /* Float+decrease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+decrease.swift"; sourceTree = "<group>"; };
+		ECDBD14C27D47A490037AF15 /* Float+approach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+approach.swift"; sourceTree = "<group>"; };
 		ECDF97FC27C4AFDF000281F1 /* DontTextAndDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontTextAndDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDF981927C4B001000281F1 /* GameSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		ECDF981B27C4B001000281F1 /* GameComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameComposer.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				ECDBD14627D45C900037AF15 /* Float+clamp.swift */,
 				ECDBD14827D46B660037AF15 /* Double+decrease.swift */,
 				ECDBD14A27D476520037AF15 /* Float+decrease.swift */,
+				ECDBD14C27D47A490037AF15 /* Float+approach.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				ECDBD14B27D476520037AF15 /* Float+decrease.swift in Sources */,
 				EC997F8527D189C60061EBF8 /* KeyboardView.swift in Sources */,
 				ECC4799027CCC205004577F1 /* Double+clamped.swift in Sources */,
+				ECDBD14D27D47A490037AF15 /* Float+approach.swift in Sources */,
 				EC7FC8C827D110E300BD612C /* GameAdapter.swift in Sources */,
 				EC08297B27CBD75A00E2B781 /* VectorOperations.swift in Sources */,
 				EC997F8D27D1EA2E0061EBF8 /* SoundManager.swift in Sources */,

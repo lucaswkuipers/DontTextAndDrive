@@ -9,12 +9,12 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
     private var carFrontVelocity: Float = 0.2 * 60 // m/s
     private var carHorizontalPosition: Float = 0 // m/s
     private var carHorizontalVelocity: Float = 0 // m/s
-    private let maximumCarHorizontalVelocity: Float = 3 // m/s
+    private let maximumCarHorizontalVelocity: Float = 2.5 // m/s
     private let carWidth = 1.76784 // m
     private let leftRoadBoundary = -3.7 // m
     private let rightRoadBoundary = 3.7 // m
     private let carMass = 1885.0 // kg
-    private let carTurningForce = 1885.0 // kg * m / s^2
+    private let carTurningForce: Double = 5
     private let groundCarFrictionCoefficient = 0.7
     private let gravityAcceleration = 9.8 // m/s^2
 
@@ -47,18 +47,18 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
 
         guard let carNode = carNode else { return }
 
-        // Acceleration
-        let carTurnPercentage = motion.getRotationPercentage()
-        let carHorizontalAcceleration = (carTurningForce * carTurnPercentage) / carMass
+        let carTurnPercentage = Float(motion.getRotationPercentage())
+//        let targetVelocity = maximumCarHorizontalVelocity * Float(carTurnPercentage)
+
+
 
         // Velocity
-        carHorizontalVelocity += Float(carHorizontalAcceleration)
-        carHorizontalVelocity.clamp(to: maximumCarHorizontalVelocity)
-        // Friction
+        carHorizontalVelocity += carTurnPercentage * 0.1
+        carHorizontalVelocity *= 0.96
 
-        if abs(carTurnPercentage) < 0.01 {
-            carHorizontalVelocity.decrease(at: 1 - Float((groundCarFrictionCoefficient * timePassed)), roundingAt: 0.00001)
-        }
+        carHorizontalVelocity.clamp(to: maximumCarHorizontalVelocity)
+
+
 
         // Position
         let bounds: Float = Float(abs(rightRoadBoundary - carWidth / 2))
@@ -68,7 +68,6 @@ final class GameSceneRendererDelegate: NSObject, SCNSceneRendererDelegate {
 
         print("---")
         print("Phone Rotation Percetange: \(motion.getRotationPercentage())")
-        print("Horizontal acceleration: \(carHorizontalAcceleration)")
         print("Horizontal velocity: \(carHorizontalVelocity)")
         print("Horizontal position: \(carNode.worldPosition.x)")
     }
