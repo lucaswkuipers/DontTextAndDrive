@@ -1,6 +1,7 @@
 import CoreMotion
 
 final class MotionManager: CMMotionManager {
+    private let maximumRotation = 0.125
 
     override init() {
         super.init()
@@ -8,7 +9,10 @@ final class MotionManager: CMMotionManager {
     }
 
     func getRotation() -> Double {
-        let rotation = (accelerometerData?.acceleration.x ?? 0).clamped(to: 0.125)
-        return rotation
+        return (accelerometerData?.acceleration.x ?? 0).clamped(to: maximumRotation)
+    }
+
+    func getRotationPercentage() -> Double {
+        return (accelerometerData?.acceleration.x ?? 0).clamped(to: maximumRotation) / maximumRotation
     }
 }
